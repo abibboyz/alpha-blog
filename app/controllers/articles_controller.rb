@@ -13,8 +13,7 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        #render plain: params[:article] to render plain text
-        render :json => params[:article]
-        #debugger
+        @article = Article.new(params.require(:article).permit(:title, :description))
+        @article.save
     end
 end
