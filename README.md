@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+***************************************************************
+Restful routes for articles with resources keyboard in routes.
+***************************************************************
