@@ -10,7 +10,7 @@
 <%= form_with(model: @user, local: true) do |f|%>
   <p>
     <%= f.label :username%><br />
-    <%=f.text_field :usernamele%>
+    <%=f.text_field :username%>
   </p>
 
   <p>
@@ -24,6 +24,6 @@
     <%= f.password_field :password%>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit "Sign Up"%>
   </p>
 <% end %>
