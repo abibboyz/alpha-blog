@@ -1,0 +1,21 @@
+<h1>Alpha Bloggers</h1>
+
+<% @users.each do |user| %>
+    <div class="card mt-4">
+    <h5 class="card-header">
+        <%= link_to user.username, user%>
+    </h5>
+        <div class="card-body">
+            <h5 class="card-title">
+            <%= link_to gravatar_for(user, size: 150), user %></h5>
+            <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>| 
+            <%= link_to 'Edit', edit_user_path(user)%> |
+                    <!--IN RAILS 7 -> data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } in place of method: :delete-->
+            
+        </div>
+        <div class = "card-footer text-muted">
+            <small>Joined <%= time_ago_in_words(user.created_at)%> ago,
+            edited <%= time_ago_in_words(user.updated_at)%> ago </small>
+        </div>
+    </div>
+<% end %>
