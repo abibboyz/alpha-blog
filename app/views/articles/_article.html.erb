@@ -1,7 +1,9 @@
 <% @articles.each do |article| %>
     <div class="card mt-4">
     <h5 class="card-header">
-        By <%= article.user.username if article.user%>
+        <% if article.user%>
+       by <%= link_to article.user.username, user_path(article.user)%>
+       <%end%>
     </h5>
         <div class="card-body">
             <h5 class="card-title"><%= article.title %></h5>
