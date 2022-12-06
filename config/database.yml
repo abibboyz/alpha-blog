@@ -50,6 +50,9 @@ test:
 #
 production:
   <<: *default
-  database: alpha_blog_production
-  username: alpha_blog
-  password: <%= ENV["ALPHA_BLOG_DATABASE_PASSWORD"] %>
+  DATABASE_URL: postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}
+  PGDATABASE: railway
+  PGHOST: containers-us-west-144.railway.app
+  PGPASSWORD: S9QIA8gRJIisvlF9wctV
+  PGPORT: 7086
+  PGUSER: postgres
