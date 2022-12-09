@@ -1,10 +1,12 @@
 <% if @user.errors.any? %>
-  <h2>We have some validation errors listed below.</h2>
-  <ul>
-    <% @user.errors.full_messages.each do |msg| %> 
-      <li><%= msg %></li>
-    <%end%>
-  </ul>
+  <div class="alert alert-danger">
+    <h2>We have some validation errors listed below.</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %> 
+        <li><%= msg %></li>
+      <%end%>
+    </ul>
+  </div>
 <%end%>
 
 <%= form_with(model: @user, local: true) do |f|%>

@@ -1,10 +1,12 @@
 <% if @article.errors.any? %>
+<div class="alert alert-danger">
   <h2>We have some validation errors listed below.</h2>
   <ul>
     <% @article.errors.full_messages.each do |msg| %> 
       <li><%= msg %></li>
     <%end%>
   </ul>
+   </div>
 <%end%>
 
 <%= form_with(model: @article, local: true) do |f|%>
@@ -20,4 +22,5 @@
   <p>
     <%= f.submit%>
   </p>
+ 
 <% end %>

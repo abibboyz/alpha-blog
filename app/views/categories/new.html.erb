@@ -1,12 +1,14 @@
 <h1>Category Form</h1>
 
 <% if @category.errors.any? %>
-  <h2>We have some validation errors listed below.</h2>
+<div class="alert alert-danger">
+  <h2 class="bold">We have some validation errors listed below.</h2>
   <ul>
     <% @category.errors.full_messages.each do |msg| %> 
       <li><%= msg %></li>
     <%end%>
   </ul>
+  </div>
 <%end%>
 
 <%= form_with(model: @category, local: true) do |f|%>
@@ -18,4 +20,5 @@
   <p>
     <%= f.submit "Create category"%>
   </p> 
+  
 <% end %>
