@@ -15,14 +15,17 @@
         <li class="nav-item">
           <%= link_to "Bloggers", users_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <%= link_to "Articles", articles_path, class: "nav-link dropdown-toggle" %>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><% link_to"Create new article", new_article_path, class:"dropdown-item" %></li>
-            <li><% link_to "View article", articles_path, class:"dropdown-item" %></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <li class="nav-item">
+          <%= link_to "Articles", articles_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Category", categories_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <% if logged_in? && current_user.admin? %>
+            <%= link_to "(Category New)", new_category_path, class: "nav-link" %>
+          <% end %>
+        </li>
         </li>
         <li class="nav-item">
           <% if !logged_in?%>
@@ -33,7 +36,8 @@
           <%else%>
             <%= link_to 'Logout', logout_path, class:"nav-link", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
             <li class="nav-item">
-              <%= "(Admin)" if current_user.admin? %><%= link_to current_user.username, user_path(current_user), class:"nav-link"%>
+              <%= "(Admin)" if current_user.admin? %>
+              <%= link_to current_user.username, user_path(current_user), class:"nav-link"%>
             </li>  
             <li class="nav-item">
               <%= link_to 'Delete User', user_path(current_user), class: " nav-link text-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure on deleting your profile?" } %>
