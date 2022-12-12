@@ -2,6 +2,9 @@
 <p>By <%= @article.user.username if @article.user%></p>
 
 <%= link_to gravatar_for(@article.user), user_path(@article.user)%>>
+<%if @article.categories.any? %>
+    <%= render @article.categories%>
+<%end%>
 <p> <strong>Title:<%=@article.title %></strong></p>
 <p> <strong>Title:<%=@article.description %></strong></p>
 <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
